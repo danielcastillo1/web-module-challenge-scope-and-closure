@@ -63,11 +63,11 @@ Use the inning function below to do the following:
   
 NOTE: This will be a callback function for the tasks below
 */
-
-function inning(number){
-   return callback(number[0])
+ const RANDOM_MAX = 3
+function inning(){
+  return Math.floor(Math.random() * RANDOM_MAX);
 }
-
+console.log(inning())
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
 Use the finalScore function below to do the following:
@@ -83,11 +83,20 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*Code Here*/){
-  /*Code Here*/
+function finalScore(inning, inningNumber ){
+  let home = 0;
+  let away = 0;
+for(let i = 0; i < inningNumber; i++){
+  home = home + inning();
+  away = away + inning();
+}
+  return {
+    Home: home,
+    Away: away
+  }
 }
 
-
+console.log("task 3", finalScore(inning, 9));
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function in a parameter - you will pass in the inning function from task 2 as your argument 
@@ -101,11 +110,14 @@ For example: invoking getInningScore(inning) might return this object:
   */
 
 
-function getInningScore() {
-  /*Your Code Here */
+function getInningScore(inning) {
+  return{
+    Home: inning(),
+    Away: inning()
+  }
 
 }
-
+console.log("task 4", getInningScore(inning));
 
 /* STRETCH: ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
